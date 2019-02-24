@@ -55,7 +55,7 @@ class Home extends Component {
       endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${this
         .state.currentPage + 1}`;
     } else {
-      endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query${
+      endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${
         this.state.searchTerm
       }&page=${this.state.currentPage + 1}`;
     }
@@ -92,9 +92,34 @@ class Home extends Component {
             <SearchBar callback={this.searchItems} />
           </div>
         ) : null}
-        <FourColGrid />
-        <Spinner />
-        <LoadMoreBtn />
+        <div className="rmdb-home-grid">
+          <FourColGrid
+            header={this.state.searchTerm ? "Search Result" : "Popular Movies"}
+            loading={this.state.loading}
+          >
+            {this.state.movies.map((element, i) => {
+              return (
+                <MovieThumb
+                  key={i}
+                  clickable={true}
+                  image={
+                    element.poster_path
+                      ? `${IMAGE_BASE_URL}${POSTER_SIZE}${element.poster_path}`
+                      : "./images/no_image.jpg"
+                  }
+                  movieId={element.id}
+                  movieName={element.original_title}
+                />
+              );
+            })}
+          </FourColGrid>
+          {/* shows spinner only if there is a need to load more */}
+          {this.state.loading ? <Spinner /> : null}
+          {this.state.currentPage <= this.state.totalPages &&
+          !this.state.loading ? (
+            <LoadMoreBtn text="Load More" onClick={this.loadMoreItems} />
+          ) : null}
+        </div>
       </div>
     );
   }
