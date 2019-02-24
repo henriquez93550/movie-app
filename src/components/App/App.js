@@ -1,13 +1,22 @@
 import React from "react";
 import Header from "../elements/Header/Header";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "../Home/Home";
+import NotFound from "../elements/NotFound/NotFound";
+import Movie from "../Movie/Movie";
 
 const App = () => {
   return (
-    <div>
-      <Header />
-      <Home />
-    </div>
+    <BrowserRouter>
+      <React.Fragment>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/:movieID" component={Movie} />
+          <Route component={NotFound} />
+        </Switch>
+      </React.Fragment>
+    </BrowserRouter>
   );
 };
 
