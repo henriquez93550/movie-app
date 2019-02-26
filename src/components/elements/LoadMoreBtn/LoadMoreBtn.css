@@ -6,14 +6,15 @@
   color: #fff;
   cursor: pointer;
   transition: all 0.3s;
+  border-radius: 50px;
 }
 
 .rmdb-loadmorebtn p {
-  font-family: 'Abel', sans-serif;
-  font-size:42px;
+  font-family: "Abel", sans-serif;
+  font-size: 42px;
   padding: 20px;
 }
 
 .rmdb-loadmorebtn:hover {
-  opacity: 0.8;
+  opacity: 0.5;
 }
