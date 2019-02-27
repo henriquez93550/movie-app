@@ -1,3 +1,7 @@
+IMDB style real world Web Application built using React js that shows movies stats and can conduct searches. 
+
+![screen shot 2019-02-26 at 9 06 54 pm](https://user-images.githubusercontent.com/41456612/53462804-bc046780-3a0a-11e9-9764-3bde862afa36.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
